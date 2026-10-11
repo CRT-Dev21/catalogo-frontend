@@ -1,0 +1,24 @@
+<section class="detail-page">
+  <a class="back-link" routerLink="/movies"><span aria-hidden="true">←</span> Volver al catálogo</a>
+
+  @if (loading()) {
+    <p class="status" role="status">Cargando película…</p>
+  } @else if (error()) {
+    <p class="status error" role="alert">{{ error() }}</p>
+  } @else if (movie(); as selectedMovie) {
+    <article class="detail">
+      <div class="poster">
+        <img [src]="selectedMovie.cover" [alt]="'Portada de ' + selectedMovie.title" />
+      </div>
+      <div class="detail-copy">
+        <p class="eyebrow">DETALLE DE LA PELÍCULA</p>
+        <h1>{{ selectedMovie.title }}</h1>
+        <p class="year">{{ selectedMovie.year }}</p>
+        <div class="divider"></div>
+        <h2>Sinopsis</h2>
+        <p class="synopsis">{{ selectedMovie.synopsis }}</p>
+        <a class="catalogue-button" routerLink="/movies">Explorar más películas</a>
+      </div>
+    </article>
+  }
+</section>

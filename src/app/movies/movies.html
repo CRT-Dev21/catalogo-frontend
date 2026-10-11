@@ -1,0 +1,35 @@
+<section class="catalogue">
+  <div class="intro">
+    <p class="eyebrow">TU PRÓXIMA HISTORIA FAVORITA</p>
+    <h1>Películas para <span>descubrir</span></h1>
+    <p class="description">Un catálogo para encontrar esa película que tanto buscabas.</p>
+  </div>
+
+  @if (loading()) {
+    <p class="status" role="status">Cargando películas…</p>
+  } @else if (error()) {
+    <p class="status error" role="alert">{{ error() }}</p>
+  } @else if (movies().length === 0) {
+    <p class="status">Todavía no hay películas en el catálogo.</p>
+  } @else {
+    <div class="catalogue-heading">
+      <h2>En el catálogo</h2>
+      <span>{{ movies().length }} películas</span>
+    </div>
+    <div class="movie-grid">
+      @for (movie of movies(); track movie.id) {
+        <a class="movie-card" [routerLink]="['/movie', movie.id]">
+          <div class="poster">
+            <img [src]="movie.cover" [alt]="'Portada de ' + movie.title" loading="lazy" />
+            <span class="year">{{ movie.year }}</span>
+            <span class="card-action" aria-hidden="true">↗</span>
+          </div>
+          <div class="card-copy">
+            <h3>{{ movie.title }}</h3>
+            <p>{{ movie.synopsis }}</p>
+          </div>
+        </a>
+      }
+    </div>
+  }
+</section>

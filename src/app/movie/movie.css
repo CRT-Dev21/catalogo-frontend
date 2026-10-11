@@ -1,0 +1,157 @@
+.detail-page {
+  margin: 0 auto;
+  max-width: 1120px;
+  padding: 36px 32px 88px;
+}
+
+.back-link {
+  align-items: center;
+  color: var(--muted);
+  display: inline-flex;
+  font-size: 0.86rem;
+  gap: 9px;
+  margin-bottom: 40px;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+.back-link span {
+  font-size: 1.15rem;
+}
+
+.detail {
+  align-items: center;
+  display: grid;
+  gap: clamp(36px, 8vw, 96px);
+  grid-template-columns: minmax(240px, 390px) minmax(0, 1fr);
+}
+
+.poster {
+  aspect-ratio: 3 / 4;
+  background: #e8e9ec;
+  border-radius: 10px;
+  box-shadow: 0 22px 60px rgb(32 40 49 / 14%);
+  overflow: hidden;
+}
+
+.poster img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.detail-copy {
+  padding: 24px 0;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin-bottom: 16px;
+}
+
+h1,
+h2 {
+  font-family: Manrope, sans-serif;
+}
+
+h1 {
+  font-size: clamp(2.35rem, 5vw, 3.65rem);
+  letter-spacing: -0.075em;
+  line-height: 1.1;
+  margin: 0 0 14px;
+}
+
+.year {
+  color: var(--muted);
+  font-size: 0.94rem;
+  margin: 0;
+}
+
+.divider {
+  background: var(--line);
+  height: 1px;
+  margin: 29px 0;
+  max-width: 120px;
+}
+
+h2 {
+  font-size: 1.02rem;
+  letter-spacing: -0.025em;
+  margin-bottom: 10px;
+}
+
+.synopsis {
+  color: #606b78;
+  font-size: 0.97rem;
+  line-height: 1.85;
+  margin-bottom: 27px;
+}
+
+.catalogue-button {
+  background: var(--accent);
+  border-radius: 5px;
+  color: white;
+  display: inline-flex;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 12px 17px;
+  text-decoration: none;
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.catalogue-button:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+}
+
+.status {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  padding: 20px;
+}
+
+.error {
+  border-color: #f0c0b9;
+  color: #9b3025;
+}
+
+@media (max-width: 700px) {
+  .detail-page {
+    padding: 26px 20px 64px;
+  }
+
+  .back-link {
+    margin-bottom: 28px;
+  }
+
+  .detail {
+    gap: 26px;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  }
+
+  .detail-copy {
+    padding: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .detail {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  .poster {
+    margin: 0 auto;
+    max-width: 300px;
+    width: 100%;
+  }
+}
