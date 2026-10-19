@@ -1,0 +1,58 @@
+:host {
+  display: flex;
+  flex: 1;
+}
+
+.home-content {
+  flex: 1;
+  padding: clamp(52px, 10vh, 112px) 0;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  margin-bottom: 18px;
+}
+
+h1 {
+  color: var(--ink);
+  letter-spacing: -0.055em;
+  line-height: 1.04;
+  margin-bottom: 24px;
+  max-width: 780px;
+}
+
+h1 span {
+  color: var(--accent);
+}
+
+.home-description {
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.75;
+  margin-bottom: 32px;
+  max-width: 650px;
+}
+
+.btn-catalogue {
+  background: var(--accent);
+  border: 0;
+  border-radius: 4px;
+  color: #17130e;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 14px 22px;
+}
+
+.btn-catalogue:hover,
+.btn-catalogue:focus-visible {
+  background: #ffd08d;
+  color: #17130e;
+}
+
+@media (max-width: 575.98px) {
+  h1 {
+    font-size: clamp(2.8rem, 15vw, 4.5rem);
+  }
+}

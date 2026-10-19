@@ -1,15 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
 :root {
   color-scheme: light;
-  --page: #f7f8fa;
+  --page: #10141c;
   --surface: #ffffff;
-  --ink: #19212b;
-  --muted: #737d8a;
-  --line: #e7eaf0;
-  --accent: #e35645;
-  --accent-dark: #bf4032;
-  --soft-accent: #fff0ed;
-  background: var(--page);
+  --ink: #f7f8fa;
+  --muted: #c4c9d2;
+  --line: rgb(255 255 255 / 16%);
+  --accent: #f3b45f;
+  --accent-dark: #d99238;
+  --soft-accent: rgb(243 180 95 / 14%);
+  background-color: var(--page);
   color: var(--ink);
   font-family: 'Segoe UI', sans-serif;
   font-synthesis: none;
@@ -21,9 +22,29 @@
 }
 
 body {
+  background-color: var(--page);
+  background-image:
+    linear-gradient(110deg, rgb(9 12 18 / 42%), rgb(9 12 18 / 18%)),
+    url('/images/fondo-catalogo.jpg');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: var(--ink);
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  color: inherit;
+}
+
+body,
+button,
+a {
+  font-family: 'Segoe UI', sans-serif;
 }
 
 button,

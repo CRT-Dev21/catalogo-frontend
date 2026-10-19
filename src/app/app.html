@@ -1,11 +1,29 @@
-<header class="site-header">
-  <a class="brand" routerLink="/movies" aria-label="Catálogo de películas, inicio">
-    <span class="brand-mark" aria-hidden="true">C</span>
-    <span>mov<span class="brand-accent">ies</span></span>
-  </a>
-  <span class="header-note">Catalogo</span>
-</header>
+<div class="site-container container">
+  <div class="site-header">
+    <a class="brand" routerLink="/" aria-label="Catálogo de películas, inicio">
+      <img
+        #logo
+        class="brand-logo"
+        src="/images/logo-catalogo.png"
+        alt="Cineclub, catálogo de películas"
+        (error)="logo.hidden = true"
+        (load)="fallback.hidden = true"
+      />
+      <span #fallback class="brand-fallback" aria-hidden="true">Cineclub</span>
+    </a>
+    <a class="header-link" routerLink="/movies">Explorar películas <span aria-hidden="true">↗</span></a>
+  </div>
 
-<main>
-  <router-outlet />
-</main>
+  <main class="site-main">
+    <router-outlet />
+  </main>
+
+  <footer class="site-footer">
+    <p class="course-name">Conceptualización de entornos de desarrollo de aplicaciones y servicios</p>
+    <div class="student-details">
+      <span>Estudiante: <strong>Cesar Romero Tornez</strong></span>
+      <span>Código: <strong>224790568</strong></span>
+      <a href="mailto:cesar.romero9056@alumnos.udg.mx">Correo: cesar.romero9056@alumnos.udg.mx</a>
+    </div>
+  </footer>
+</div>

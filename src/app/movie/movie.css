@@ -88,7 +88,7 @@ h2 {
 }
 
 .synopsis {
-  color: #606b78;
+  color: var(--muted);
   font-size: 0.97rem;
   line-height: 1.85;
   margin-bottom: 27px;
@@ -115,7 +115,7 @@ h2 {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 8px;
-  color: var(--muted);
+  color: #19212b;
   padding: 20px;
 }
 

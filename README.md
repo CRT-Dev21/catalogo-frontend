@@ -19,4 +19,11 @@ Frontend desarrollado con Angular 20.3.1 para el API de Spring Boot.
 - `src/app/movie`: consulta y muestra una película con `GET /api/movies/{id}`.
 - `src/app/services/movie.service.ts`: cliente HTTP compartido para el catálogo.
 
-Las rutas de pantalla son `/movies` y `/movie/:id`.
+Las rutas de pantalla son `/` (inicio), `/movies` y `/movie/:id`.
+
+## Página de inicio
+
+- Bootstrap 5 se utiliza para el contenedor, la cuadrícula y los componentes responsivos.
+- Agrega las imágenes en `public/images/`: `logo-catalogo.png` (logotipo del encabezado) y
+  `fondo-catalogo.jpg` (fondo de toda la página).
+- Sustituye en el pie de página los textos de ejemplo por tu nombre completo, código y correo.

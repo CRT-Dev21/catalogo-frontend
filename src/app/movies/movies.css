@@ -125,7 +125,7 @@ h1 span {
   background: white;
   border-radius: 50%;
   bottom: 12px;
-  color: var(--ink);
+  color: #19212b;
   display: flex;
   font-size: 1.1rem;
   height: 32px;
@@ -166,7 +166,7 @@ h1 span {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 8px;
-  color: var(--muted);
+  color: #19212b;
   padding: 20px;
 }
 

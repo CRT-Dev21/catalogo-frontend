@@ -3,55 +3,106 @@
   min-height: 100vh;
 }
 
+.site-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .site-header {
   align-items: center;
   border-bottom: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  max-width: 1240px;
-  padding: 22px 32px;
+  padding: 22px 0;
+  width: 100%;
 }
 
 .brand {
   align-items: center;
-  color: var(--ink);
-  display: flex;
-  font-size: 1.35rem;
-  font-weight: 800;
-  gap: 10px;
-  letter-spacing: -0.06em;
+  display: inline-flex;
   text-decoration: none;
 }
 
-.brand-mark {
-  align-items: center;
-  background: var(--accent);
-  border-radius: 9px;
-  color: white;
-  display: inline-flex;
-  font-size: 1rem;
-  height: 34px;
-  justify-content: center;
-  letter-spacing: 0;
-  width: 34px;
+.brand-logo {
+  height: 54px;
+  max-width: min(240px, 58vw);
+  object-fit: contain;
+  object-position: left center;
 }
 
-.brand-accent {
+.brand-fallback {
+  color: var(--ink);
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+}
+
+.header-link {
   color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
 }
 
-.header-note {
+.header-link:hover {
+  color: #ffd08d;
+}
+
+.site-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  padding: 20px 0;
 }
 
-@media (max-width: 600px) {
+.course-name {
+  color: var(--ink);
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.student-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+}
+
+.student-details strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.student-details a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.student-details a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 575.98px) {
   .site-header {
-    padding: 18px 20px;
+    padding: 18px 0;
   }
 
-  .header-note {
-    display: none;
+  .brand-logo {
+    height: 44px;
+  }
+
+  .brand-fallback {
+    font-size: 1.25rem;
+  }
+
+  .header-link {
+    font-size: 0.8rem;
   }
 }
