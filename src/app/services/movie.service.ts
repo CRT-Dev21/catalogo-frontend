@@ -23,4 +23,8 @@ export class MovieService {
   updateMovie(id: number, movie: MovieRequest): Observable<Movie> {
     return this.http.put<Movie>(`${this.endpoint}/${id}`, movie);
   }
+
+  deleteMovie(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.endpoint}/${id}`);
+  }
 }

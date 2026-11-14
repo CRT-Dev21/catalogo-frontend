@@ -19,10 +19,11 @@ Frontend desarrollado con Angular 20.3.1 para el API de Spring Boot.
 - `src/app/movie`: consulta y muestra una película con `GET /api/movies/{id}`.
 - `src/app/add-movie`: agrega películas mediante `POST /api/movies`.
 - `src/app/edit-movie`: edita películas mediante `PUT /api/movies/{id}`.
-- `src/app/services/movie.service.ts`: cliente HTTP compartido para el catálogo y su edición.
+- `src/app/services/movie.service.ts`: cliente HTTP compartido para consultar, crear, editar y
+  eliminar películas.
 
 Las rutas de pantalla son `/` (inicio), `/movies`, `/movies/new`, `/movie/:id` y
-`/movie/:id/edit`.
+`/movie/:id/edit`. La eliminación solicita confirmación y utiliza `DELETE /api/movies/{id}`.
 
 ## Página de inicio
 

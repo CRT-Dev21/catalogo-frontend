@@ -17,10 +17,23 @@
         <div class="divider"></div>
         <h2>Sinopsis</h2>
         <p class="synopsis">{{ selectedMovie.synopsis }}</p>
-        <a class="catalogue-button me-2" [routerLink]="['/movie', selectedMovie.id, 'edit']">
-          Editar película
-        </a>
-        <a class="catalogue-button" routerLink="/movies">Explorar más películas</a>
+        @if (deleteError()) {
+          <p class="alert alert-danger" role="alert">{{ deleteError() }}</p>
+        }
+        <div class="detail-actions d-flex flex-wrap gap-2">
+          <a class="catalogue-button" [routerLink]="['/movie', selectedMovie.id, 'edit']">
+            Editar película
+          </a>
+          <button
+            class="btn btn-outline-danger"
+            type="button"
+            [disabled]="deleting()"
+            (click)="deleteMovie()"
+          >
+            {{ deleting() ? 'Eliminando…' : 'Eliminar película' }}
+          </button>
+          <a class="btn btn-outline-light" routerLink="/movies">Regresar al catálogo</a>
+        </div>
       </div>
     </article>
   }

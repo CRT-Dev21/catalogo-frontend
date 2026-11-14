@@ -80,4 +80,18 @@ describe('MovieService', () => {
 
     expect(response).toEqual({ id: 7, ...movieRequest });
   });
+
+  it('deletes a movie with DELETE using its ID', () => {
+    let completed = false;
+
+    service.deleteMovie(7).subscribe(() => {
+      completed = true;
+    });
+
+    const request = httpTestingController.expectOne('/api/movies/7');
+    expect(request.request.method).toBe('DELETE');
+    request.flush(null);
+
+    expect(completed).toBeTrue();
+  });
 });
