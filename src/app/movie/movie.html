@@ -17,6 +17,9 @@
         <div class="divider"></div>
         <h2>Sinopsis</h2>
         <p class="synopsis">{{ selectedMovie.synopsis }}</p>
+        <a class="catalogue-button me-2" [routerLink]="['/movie', selectedMovie.id, 'edit']">
+          Editar película
+        </a>
         <a class="catalogue-button" routerLink="/movies">Explorar más películas</a>
       </div>
     </article>

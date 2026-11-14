@@ -17,9 +17,12 @@ Frontend desarrollado con Angular 20.3.1 para el API de Spring Boot.
 
 - `src/app/movies`: lista las películas obtenidas de `GET /api/movies`.
 - `src/app/movie`: consulta y muestra una película con `GET /api/movies/{id}`.
-- `src/app/services/movie.service.ts`: cliente HTTP compartido para el catálogo.
+- `src/app/add-movie`: agrega películas mediante `POST /api/movies`.
+- `src/app/edit-movie`: edita películas mediante `PUT /api/movies/{id}`.
+- `src/app/services/movie.service.ts`: cliente HTTP compartido para el catálogo y su edición.
 
-Las rutas de pantalla son `/` (inicio), `/movies` y `/movie/:id`.
+Las rutas de pantalla son `/` (inicio), `/movies`, `/movies/new`, `/movie/:id` y
+`/movie/:id/edit`.
 
 ## Página de inicio
 

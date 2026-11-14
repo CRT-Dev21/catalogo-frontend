@@ -1,0 +1,164 @@
+REPORTE DE ACTIVIDAD
+
+CREACIÓN Y EDICIÓN DE PELÍCULAS EN EL CATÁLOGO CINECLUB
+
+
+DATOS DEL ESTUDIANTE
+
+Materia: Conceptualización de entornos de desarrollo de aplicaciones y servicios
+Estudiante: Cesar Romero Tornez
+Código: 224790568
+Correo: cesar.romero9056@alumnos.udg.mx
+Fecha de entrega: ______________________________________
+
+
+INTRODUCCIÓN
+
+En esta actividad se amplió la aplicación web Cineclub, desarrollada con Angular, para permitir agregar películas nuevas y editar películas existentes. Los formularios se conectaron con los servicios REST del backend Spring Boot mediante HttpClient.
+
+La aplicación utiliza el servicio MovieService para centralizar las solicitudes al backend. De esta manera, los componentes de agregar y editar no guardan los datos únicamente en la interfaz, sino que los envían a los endpoints correspondientes para que Spring Boot los procese.
+
+
+OBJETIVO
+
+Crear los componentes para agregar y editar películas, conectarlos con los servicios existentes y permitir que el usuario capture o modifique la información del catálogo desde la aplicación Angular.
+
+
+HERRAMIENTAS Y TECNOLOGÍAS
+
+• Angular y TypeScript para construir los componentes.
+• Formularios reactivos de Angular para capturar y validar los datos.
+• HttpClient para comunicarse con el backend.
+• Spring Boot para exponer los servicios REST.
+• Bootstrap para apoyar el diseño visual de los formularios.
+• Angular Router para navegar entre el catálogo, el detalle y los formularios.
+
+
+DESARROLLO DE LA ACTIVIDAD
+
+1. SERVICIO PARA COMUNICARSE CON EL BACKEND
+
+Se amplió MovieService para centralizar las operaciones relacionadas con las películas. El servicio utiliza la dirección base /api/movies y ofrece los siguientes métodos:
+
+• getMovies(): obtiene la lista de películas.
+• getMovie(id): obtiene una película por su identificador.
+• createMovie(movie): envía una nueva película mediante una petición POST.
+• updateMovie(id, movie): envía los cambios de una película mediante una petición PUT.
+
+Los datos enviados en las operaciones de alta y edición incluyen título, sinopsis, año y portada. El identificador no se envía en el cuerpo de la actualización, porque el backend conserva el ID asociado a la ruta.
+
+2. COMPONENTE PARA AGREGAR UNA PELÍCULA
+
+Se creó el componente AddMovie y se agregó la ruta /movies/new. El formulario permite capturar el título, la sinopsis, el año de estreno y la URL o ruta de la portada.
+
+Al enviar el formulario, el componente valida que los campos obligatorios no estén vacíos, que el año sea un entero y que sea mayor que cero. Si los datos son válidos, llama a MovieService.createMovie(), que realiza una petición POST a /api/movies.
+
+Cuando el backend confirma la creación, la aplicación navega al detalle de la película recién agregada. Si ocurre un error, se muestra un mensaje en el formulario para informar al usuario.
+
+3. COMPONENTE PARA EDITAR UNA PELÍCULA
+
+Se creó el componente EditMovie y se agregó la ruta /movie/:id/edit. Al abrir esta pantalla, el componente obtiene el ID desde la ruta y solicita los datos actuales con MovieService.getMovie(id).
+
+Cuando se reciben los datos, los campos del formulario se rellenan con el título, la sinopsis, el año y la portada existentes. El usuario puede modificarlos y guardar los cambios. La operación utiliza MovieService.updateMovie(id, datos), que envía una petición PUT a /api/movies/{id}.
+
+Si la actualización es correcta, la aplicación vuelve al detalle de esa película. Si el ID no es válido, la película no existe o el servidor responde con un error, se presenta un mensaje explicativo.
+
+4. NAVEGACIÓN
+
+Se configuraron las siguientes rutas:
+
+• /movies: muestra el catálogo de películas.
+• /movies/new: abre el formulario para agregar una película.
+• /movie/:id: muestra el detalle de una película.
+• /movie/:id/edit: abre el formulario para editar una película existente.
+
+Desde el catálogo se puede acceder al formulario de alta mediante el botón “Agregar película”. Desde el detalle de una película se puede abrir el formulario de edición con el botón “Editar película”.
+
+Los componentes de alta y edición se cargan de manera diferida al navegar a sus rutas.
+
+
+FLUJO DE FUNCIONAMIENTO
+
+AGREGAR:
+
+1. El usuario abre el catálogo y selecciona “Agregar película”.
+2. Angular muestra el formulario en /movies/new.
+3. El usuario captura los datos y envía el formulario.
+4. Angular valida los campos y MovieService envía POST /api/movies.
+5. Spring Boot valida y guarda la película.
+6. La aplicación muestra el detalle de la película recién creada.
+
+EDITAR:
+
+1. El usuario abre el detalle de una película y selecciona “Editar película”.
+2. Angular obtiene el ID desde la ruta.
+3. MovieService solicita la película con GET /api/movies/{id}.
+4. El formulario se completa con los datos existentes.
+5. El usuario modifica la información y guarda los cambios.
+6. MovieService envía PUT /api/movies/{id} y Spring Boot actualiza el registro.
+7. La aplicación vuelve al detalle actualizado.
+
+
+ENDPOINTS UTILIZADOS
+
+POST /api/movies
+Se utiliza para crear una película. El backend responde con el recurso creado.
+
+GET /api/movies/{id}
+Se utiliza para cargar los datos actuales antes de editar una película.
+
+PUT /api/movies/{id}
+Se utiliza para reemplazar los campos editables de una película existente.
+
+Los campos enviados en el cuerpo de POST y PUT son: title, synopsis, year y cover.
+
+
+VALIDACIÓN Y MANEJO DE ERRORES
+
+Los formularios requieren título, sinopsis, año y portada. Los campos de texto no pueden contener únicamente espacios; el año debe ser un entero positivo. Al intentar enviar datos incompletos o inválidos, el formulario señala los campos que deben corregirse.
+
+También se muestran mensajes cuando el servidor rechaza la información, cuando no se encuentra la película solicitada o cuando no se puede establecer conexión con el backend.
+
+
+PRUEBAS REALIZADAS
+
+La compilación de Angular terminó correctamente. Las pruebas automatizadas verificaron las solicitudes POST y PUT del servicio, además de las pruebas existentes del catálogo y la navegación. En la ejecución realizada, las seis pruebas disponibles pasaron.
+
+Para comprobar la operación completa con datos reales, es necesario iniciar el backend Spring Boot y después ejecutar el frontend. La compilación también muestra una advertencia de que el bundle inicial supera el presupuesto configurado por 14.46 kB; las pantallas nuevas de agregar y editar se cargan de manera diferida.
+
+
+EVIDENCIAS
+
+EVIDENCIA 1. CATÁLOGO Y ACCESO PARA AGREGAR PELÍCULA
+
+[PEGAR AQUÍ LA CAPTURA DEL CATÁLOGO CON EL BOTÓN “AGREGAR PELÍCULA”]
+
+
+EVIDENCIA 2. FORMULARIO PARA AGREGAR PELÍCULA
+
+[PEGAR AQUÍ LA CAPTURA DE LA RUTA /movies/new CON LOS CAMPOS DEL FORMULARIO]
+
+
+EVIDENCIA 3. VALIDACIÓN DEL FORMULARIO
+
+[PEGAR AQUÍ LA CAPTURA DE LOS MENSAJES DE VALIDACIÓN, SI SE SOLICITA]
+
+
+EVIDENCIA 4. DETALLE Y ACCESO PARA EDITAR
+
+[PEGAR AQUÍ LA CAPTURA DEL DETALLE CON EL BOTÓN “EDITAR PELÍCULA”]
+
+
+EVIDENCIA 5. FORMULARIO PARA EDITAR PELÍCULA
+
+[PEGAR AQUÍ LA CAPTURA DE LA RUTA /movie/{id}/edit CON LOS DATOS EXISTENTES CARGADOS]
+
+
+EVIDENCIA 6. SOLICITUDES HTTP
+
+[PEGAR AQUÍ UNA CAPTURA DE LA PESTAÑA NETWORK/RED MOSTRANDO POST O PUT A /api/movies]
+
+
+CONCLUSIÓN
+
+La actividad incorporó operaciones de alta y edición al catálogo Cineclub. Los componentes utilizan formularios reactivos para capturar y validar los datos, y MovieService para enviar las solicitudes al backend Spring Boot. La navegación permite acceder a cada operación desde el catálogo o el detalle de una película, y los mensajes de estado ayudan a identificar errores durante la comunicación con el servidor.

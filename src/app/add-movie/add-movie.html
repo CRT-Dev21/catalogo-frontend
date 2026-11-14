@@ -1,0 +1,73 @@
+<section class="movie-form-page">
+  <a class="movie-form-back" routerLink="/movies">← Volver al catálogo</a>
+  <h1 class="display-5 fw-bold mb-4">Agregar película</h1>
+
+  <form class="movie-form-card" [formGroup]="form" (ngSubmit)="save()" novalidate>
+    @if (error()) {
+      <p class="alert alert-danger" role="alert">{{ error() }}</p>
+    }
+
+    <div class="mb-3">
+      <label class="form-label" for="title">Título</label>
+      <input class="form-control" id="title" formControlName="title" required />
+      @if (form.controls.title.touched && form.controls.title.invalid) {
+        <small class="text-warning">Escribe el título de la película.</small>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="synopsis">Sinopsis</label>
+      <textarea
+        class="form-control"
+        id="synopsis"
+        formControlName="synopsis"
+        rows="4"
+        required
+      ></textarea>
+      @if (form.controls.synopsis.touched && form.controls.synopsis.invalid) {
+        <small class="text-warning">Escribe la sinopsis de la película.</small>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="year">Año</label>
+      <input
+        class="form-control"
+        id="year"
+        type="number"
+        min="1"
+        step="1"
+        formControlName="year"
+        required
+      />
+      @if (form.controls.year.touched && form.controls.year.hasError('required')) {
+        <small class="text-warning">Escribe el año de estreno.</small>
+      } @else if (form.controls.year.touched && form.controls.year.hasError('min')) {
+        <small class="text-warning">El año debe ser mayor que cero.</small>
+      } @else if (form.controls.year.touched && form.controls.year.hasError('integer')) {
+        <small class="text-warning">El año debe ser un número entero.</small>
+      }
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label" for="cover">URL o ruta de la portada</label>
+      <input
+        class="form-control"
+        id="cover"
+        formControlName="cover"
+        placeholder="https://ejemplo.com/portada.jpg"
+        required
+      />
+      @if (form.controls.cover.touched && form.controls.cover.invalid) {
+        <small class="text-warning">Escribe la URL o ruta de la portada.</small>
+      }
+    </div>
+
+    <div class="d-flex flex-wrap gap-2">
+      <button class="btn btn-warning" type="submit" [disabled]="saving()">
+        {{ saving() ? 'Agregando…' : 'Agregar película' }}
+      </button>
+      <a class="btn btn-outline-light" routerLink="/movies">Cancelar</a>
+    </div>
+  </form>
+</section>

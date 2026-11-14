@@ -1,0 +1,38 @@
+.movie-form-page {
+  margin: 0 auto;
+  max-width: 760px;
+  padding: 48px 24px 80px;
+  width: 100%;
+}
+
+.movie-form-page h1 {
+  color: var(--ink);
+  letter-spacing: -0.045em;
+}
+
+.movie-form-card {
+  background: rgb(16 20 28 / 88%);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: clamp(22px, 5vw, 38px);
+}
+
+.movie-form-card .form-label {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.movie-form-card .form-control {
+  background-color: rgb(255 255 255 / 96%);
+}
+
+.movie-form-back {
+  color: var(--muted);
+  display: inline-block;
+  margin-bottom: 22px;
+  text-decoration: none;
+}
+
+.movie-form-back:hover {
+  color: var(--accent);
+}
